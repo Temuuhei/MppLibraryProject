@@ -1,12 +1,12 @@
 package MppLibraryProject.business;
 
-import java.util.List;
-import java.util.Map;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class Adminstrator extends User implements Serializable{
+public class Adminstrator extends User implements Serializable {
 	private String password;
 	private List<Member> members;
 	private List<Book> books;
@@ -14,16 +14,16 @@ public class Adminstrator extends User implements Serializable{
 	private Map<String, Book> bookMap;
 
 	public Adminstrator(String uid, String fname, String lname, String phone, Address address, String password) {
-		super(uid, fname, lname, phone,address);
+		super(uid, fname, lname, phone, address);
 		this.password = password;
 		this.members = new ArrayList<Member>();
 		this.books = new ArrayList<Book>();
 		this.memberMap = new HashMap<>();
 		this.bookMap = new HashMap<>();
 	}
-	
-	public boolean addBook(int bookID, String bookTitle, String ISBN, int bookCopies, Author author) {
-		Book book = new Book(bookID,bookTitle,ISBN,bookCopies,author);
+
+	public boolean addBook(int bookID, String bookTitle, String ISBN, List<Author> author) {
+		Book book = new Book(bookID, bookTitle, ISBN, author);
 		books.add(book);
 		bookMap.put(book.getISBN(), book);
 		return true;
