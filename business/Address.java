@@ -14,7 +14,7 @@ public class Address {
 		this.zip = zip;
 		this.user = user;
 	}
-
+// factory method
 	private void setStreet(String newStr) {
 		this.street = newStr;
 	}

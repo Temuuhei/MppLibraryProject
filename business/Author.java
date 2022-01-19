@@ -4,7 +4,7 @@ public class Author extends User {
 	private int credential;
 	private String bio;
 
-	public Author(int userId, String firstName, String lastName, String phoneNumber, Address address, int credential,
+	public Author(String userId, String firstName, String lastName, String phoneNumber, Address address, int credential,
 			String bio) {
 		super(userId, firstName, lastName, phoneNumber, address);
 		this.credential = credential;

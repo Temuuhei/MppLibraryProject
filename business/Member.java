@@ -6,7 +6,7 @@ import java.util.List;
 public class Member extends User {
 	private List<Checkout> checkouts;
 
-	public Member(int userId, String firstName, String lastName, String phoneNumber, Address address) {
+	public Member(String userId, String firstName, String lastName, String phoneNumber, Address address) {
 		super(userId, firstName, lastName, phoneNumber, address);
 		this.checkouts = new ArrayList<Checkout>();
 	}

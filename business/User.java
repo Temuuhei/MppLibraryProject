@@ -13,13 +13,13 @@ public class User {
 
 	private User() {
 	}
-
-	public User(String uid, String fname, String lname, String phone, String str, String city, String state, int zip) {
+// address нэг чиглэлд object р дамжина
+	public User(String uid, String fname, String lname, String phone, Address address) {
 		this.userId = uid;
 		this.firstName = fname;
 		this.lastName = lname;
 		this.phoneNumber = phone;
-		this.address = new Address(str, city, state, zip, this);
+		this.address = address;
 		this.roles = new ArrayList<Role>();
 	}
 
@@ -29,16 +29,17 @@ public class User {
 		roles.add(role);
 		return true;
 	}
-
-	public static User addUser(String uid, String fname, String lname, String phone, Address address) {
-		User user = new User();
+// comment болго
+	public static boolean updateUser(User user,String uid, String fname, String lname, String phone, Address address) {
+		if(user == null) {
+			return false;
+		}
 		user.userId = uid;
 		user.firstName = fname;
 		user.lastName = lname;
 		user.phoneNumber = phone;
 		user.address = address;
-
-		return user;
+		return true;
 	}
 
 	public String getUserId() {
