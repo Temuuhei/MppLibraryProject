@@ -87,7 +87,8 @@ public class Checkout implements Serializable {
 
 	@Override
 	public String toString() {
-		return borrowDay.toString() + ", " + dueDate.toString() + ", " + checkedOut;
+		return borrowDay.toString() + ", " + bookCopy.getBook().getBookTitle() + ", " + dueDate.toString() + ", "
+				+ checkedOut;
 	}
 
 }
