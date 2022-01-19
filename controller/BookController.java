@@ -61,7 +61,7 @@ public class BookController {
 		}
 	}
 	
-	public void loadBookMao(List<Book> bookList) {
+	public void loadBookMap(List<Book> bookList) {
 		Map<String, Book> books = new HashMap<>();
 		bookList.forEach(book -> books.put(book.getISBN(),book));
 		Config.saveToStorage(StorageType.BOOKS, books);
