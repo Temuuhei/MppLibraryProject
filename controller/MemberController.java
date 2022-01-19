@@ -1,10 +1,12 @@
 package MppLibraryProject.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
+import MppLibraryProject.business.Checkout;
 import MppLibraryProject.business.Member;
 import MppLibraryProject.config.Config;
 import MppLibraryProject.config.Config.StorageType;
@@ -55,6 +57,43 @@ public class MemberController {
 		if (members.containsKey(memberId)) {
 			members.remove(memberId);
 			Config.saveToStorage(StorageType.MEMBERS, members);
+		}
+	}
+
+	public void createCheckout(Member member, Checkout checkout) {
+		String memberId = member.getUserId();
+		if (members.containsKey(memberId)) {
+			members.get(memberId).addCheckout(checkout);
+			Config.saveToStorage(StorageType.MEMBERS, members);
+		}
+	}
+
+	public void updateCheckedout(Member member, Checkout checkout, LocalDate checkedoutDate) {
+		String memberId = member.getUserId();
+		if (members.containsKey(memberId)) {
+			List<Checkout> list = members.get(memberId).getCheckouts();
+			for (Checkout c : list) {
+				if (c.equals(checkout)) {
+					c.setCheckedout(checkedoutDate);
+					c.getBookCopy().changeAvailability();
+					Config.saveToStorage(StorageType.MEMBERS, members);
+					break;
+				}
+			}
+		}
+	}
+
+	public void updateLateReturn(Member member, Checkout checkout, double lateReturnAmount, LocalDate lateReturnDate) {
+		String memberId = member.getUserId();
+		if (members.containsKey(memberId)) {
+			List<Checkout> list = members.get(memberId).getCheckouts();
+			for (Checkout c : list) {
+				if (c.equals(checkout)) {
+					c.setLateReturn(lateReturnAmount, lateReturnDate);
+					Config.saveToStorage(StorageType.MEMBERS, members);
+					break;
+				}
+			}
 		}
 	}
 

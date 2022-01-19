@@ -1,6 +1,12 @@
 package MppLibraryProject.business;
 
-public class BookCopy {
+import java.io.Serializable;
+
+public class BookCopy implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Book book;
 	private int uniqueNo;
 	private boolean availability = true;

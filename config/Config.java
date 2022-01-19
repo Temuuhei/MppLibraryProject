@@ -16,6 +16,10 @@ public class Config {
 		BOOKS, MEMBERS, USERS, AUTHORS;
 	}
 
+	public enum DayType {
+		SEVEN_7, TWENTYONE_21
+	}
+
 	public static void saveToStorage(StorageType type, Object ob) {
 		ObjectOutputStream out = null;
 		try {
@@ -53,4 +57,5 @@ public class Config {
 		}
 		return retVal;
 	}
+
 }

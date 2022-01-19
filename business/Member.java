@@ -1,11 +1,13 @@
 package MppLibraryProject.business;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
+import MppLibraryProject.config.Config.DayType;
 import MppLibraryProject.controller.MemberController;
 
 public class Member extends User implements Serializable {
@@ -28,6 +30,8 @@ public class Member extends User implements Serializable {
 	}
 
 	public List<Checkout> getCheckouts() {
+		Comparator<Checkout> compareByDate = (o1, o2) -> o1.getDueDate().compareTo(o2.getDueDate());
+		Collections.sort(this.checkouts, compareByDate);
 		return this.checkouts;
 	}
 
@@ -38,11 +42,13 @@ public class Member extends User implements Serializable {
 		memberController.createMember(member);
 		System.out.println(memberController.getMember("1024").getUserId());
 
-		Collection<Member> list = memberController.getMemberList();
-		Iterator iterator = list.iterator();
-		while (iterator.hasNext()) {
-			Member member2 = (Member) iterator.next();
-			System.out.println(member2.getUserId());
-		}
+		BookCopy bookCopy = new BookCopy(null, 1, true);
+
+		Checkout checkout = new Checkout(bookCopy, member, DayType.SEVEN_7);
+		memberController.createCheckout(member, checkout);
+		System.out.println(memberController.getMember("1024").getCheckouts());
+
+		memberController.updateCheckedout(member, checkout, LocalDate.now());
+		System.out.println(memberController.getMember("1024").getCheckouts());
 	}
 }
