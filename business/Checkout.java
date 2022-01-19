@@ -17,7 +17,7 @@ public class Checkout {
 		this.checkedOut = false;
 		this.dueDate = dueDate;
 
-		this.book.removeBookCopy();
+		// this.book.removeBookCopy();
 	}
 
 	public Book getBook() {

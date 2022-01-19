@@ -1,9 +1,14 @@
 package MppLibraryProject.business;
 
-import java.util.List;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-public class User {
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String userId;
 	private String firstName;
 	private String lastName;
@@ -13,6 +18,7 @@ public class User {
 
 	private User() {
 	}
+
 // address нэг чиглэлд object р дамжина
 	public User(String uid, String fname, String lname, String phone, Address address) {
 		this.userId = uid;
@@ -29,9 +35,10 @@ public class User {
 		roles.add(role);
 		return true;
 	}
+
 // comment болго
-	public static boolean updateUser(User user,String uid, String fname, String lname, String phone, Address address) {
-		if(user == null) {
+	public static boolean updateUser(User user, String uid, String fname, String lname, String phone, Address address) {
+		if (user == null) {
 			return false;
 		}
 		user.userId = uid;

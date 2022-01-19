@@ -1,6 +1,12 @@
 package MppLibraryProject.business;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String street;
 	private String city;
 	private String state;
@@ -14,6 +20,7 @@ public class Address {
 		this.zip = zip;
 		this.user = user;
 	}
+
 // factory method
 	private void setStreet(String newStr) {
 		this.street = newStr;

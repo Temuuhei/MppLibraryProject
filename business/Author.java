@@ -1,6 +1,14 @@
 package MppLibraryProject.business;
 
-public class Author extends User {
+import java.io.Serializable;
+
+import MppLibraryProject.controller.AuthorController;
+
+public class Author extends User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int credential;
 	private String bio;
 
@@ -25,5 +33,13 @@ public class Author extends User {
 
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+
+	public static void main(String[] args) {
+		Author author = new Author("1024", "Jargal", "Ganbaatar", "641-819-2339",
+				new Address("1000 N 4th St", "Fairfield", "IA", 52557, null), 1, "Zohiolch");
+		AuthorController authorController = new AuthorController();
+		authorController.createAuthor(author);
+		System.out.println(authorController.getAuthor("1024").getBio());
 	}
 }
