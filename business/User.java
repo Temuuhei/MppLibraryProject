@@ -53,23 +53,19 @@ public class User implements Serializable {
 		return this.userId;
 	}
 
-	public void setUserId(String uid) {
-		this.userId = uid;
+	public String getFirstName() {
+		return this.firstName;
 	}
 
-	public void setFirstName(String fname) {
-		this.firstName = fname;
+	public String getLastName() {
+		return this.lastName;
 	}
 
-	public void setLastName(String lname) {
-		this.lastName = lname;
+	public String getPhoneNumber() {
+		return this.phoneNumber;
 	}
 
-	public void setPhoneNumber(String phone) {
-		this.phoneNumber = phone;
-	}
-
-	public void setAdress(Address addr) {
-		this.address = addr;
+	public Address getAdress() {
+		return this.address;
 	}
 }

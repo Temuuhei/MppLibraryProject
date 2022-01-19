@@ -2,10 +2,11 @@ package MppLibraryProject.business;
 
 import java.util.List;
 import java.util.Map;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Adminstrator extends User implements DataAccess{
+public class Adminstrator extends User implements Serializable{
 	private String password;
 	private List<Member> members;
 	private List<Book> books;
@@ -21,15 +22,6 @@ public class Adminstrator extends User implements DataAccess{
 		this.bookMap = new HashMap<>();
 	}
 	
-	@Override
-	public boolean addMember(Member user) {
-		if(user != null) 
-			return false;
-		String uid = user.getUserId();
-		memberMap.put(uid, user);
-		return true;
-	}
-
 	public boolean addBook(int bookID, String bookTitle, String ISBN, int bookCopies, Author author) {
 		Book book = new Book(bookID,bookTitle,ISBN,bookCopies,author);
 		books.add(book);
@@ -52,24 +44,5 @@ public class Adminstrator extends User implements DataAccess{
 		}
 		return null;
 	}
-
-	@Override
-	public HashMap<String, User> readUserMap() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public HashMap<String, Book> readBookMap() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public HashMap<String, Member> readMemberMap() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }
